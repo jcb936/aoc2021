@@ -34,7 +34,6 @@ void get_input(grid& gr, vector<fold>& folds)
 
 void fold_paper(grid& gr, fold& fl)
 {
-    vector<coord> to_remove{};
     if (fl.first == 'x')
     {
         auto it = begin(gr);
