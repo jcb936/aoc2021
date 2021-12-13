@@ -40,17 +40,15 @@ void fold_paper(grid& gr, fold& fl)
         auto it = begin(gr);
         while (it != end(gr))
         {
-            if (it->first > fl.second)
+            auto old = it;
+            it++;
+            if (old->first > fl.second)
             {
-                int dist = abs(it->first - fl.second);
-                coord new_coord{fl.second - dist, it->second};
-                auto old = it;
-                it++;
+                int dist = abs(old->first - fl.second);
+                coord new_coord{fl.second - dist, old->second};
                 gr.erase(old);
                 gr.insert(new_coord);
             }
-            else
-                it++;
         }
     }
     else
@@ -58,17 +56,15 @@ void fold_paper(grid& gr, fold& fl)
         auto it = begin(gr);
         while (it != end(gr))
         {
-            if (it->second > fl.second)
+            auto old = it;
+            it++;
+            if (old->second > fl.second)
             {
-                int dist = abs(it->second - fl.second);
-                coord new_coord{it->first, fl.second - dist};
-                auto old = it;
-                it++;
+                int dist = abs(old->second - fl.second);
+                coord new_coord{old->first, fl.second - dist};
                 gr.erase(old);
                 gr.insert(new_coord);
             }
-            else
-                it++;
         } 
     }
 }
