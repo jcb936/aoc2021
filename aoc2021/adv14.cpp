@@ -25,6 +25,7 @@ void get_input(map<string, char>& rules, map<string, int64_t>& str, map<char, ui
         }
         it++;
     }
+    
     while (!cin.eof())
     {
         string code{};
@@ -38,7 +39,6 @@ void get_input(map<string, char>& rules, map<string, int64_t>& str, map<char, ui
 map<string, int64_t> tick_polymer(const map<string, char>& rules, map<string, int64_t>& str, map<char, uint64_t>& distr)
 {
     map<string, int64_t> result{};
-
     for (auto& pair : rules)
     {
         if (str.find(pair.first) != end(str))
@@ -54,9 +54,8 @@ map<string, int64_t> tick_polymer(const map<string, char>& rules, map<string, in
             result[c2] += value;
             distr[pair.second] += value;
         }
-
     }
-
+    
     return move(result);
 }
 
@@ -72,6 +71,7 @@ uint64_t compute_difference(map<char, uint64_t>& distr)
         if (element.second < current_min)
             current_min = element.second;
     }
+    
     return current_max - current_min;
 }
 
